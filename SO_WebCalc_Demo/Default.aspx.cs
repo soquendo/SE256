@@ -37,6 +37,11 @@ namespace SO_WebCalc_Demo
             txtLCD.Text += temp.Text;       //get the text # from that button text prop
         }
 
+        protected void btnClear_Click(object sender, EventArgs e)
+        {
+            txtLCD.Text += "";
+        }
+
 
 
         protected void btnPlus_Click(object sender, EventArgs e)

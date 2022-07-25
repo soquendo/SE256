@@ -14,7 +14,7 @@
                 <asp:Button ID="btn1" runat="server" Text="1" OnClick="btn1_Click" />&nbsp;&nbsp;
                 <asp:Button ID="btn2" runat="server" Text="2" OnClick="btn2_Click" />&nbsp;&nbsp;
                 <asp:Button ID="btn3" runat="server" Text="3" OnClick="btn3_Click" />&nbsp;&nbsp;
-                <asp:Button ID="btnClear" runat="server" Text="CLEAR" OnClick="btnClear_Click" Width="55px" />
+                <asp:Button ID="btnClear" runat="server" Text="CLEAR" OnClick="btnClear_Click" />
                 
             </p>        
 
