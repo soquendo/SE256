@@ -39,7 +39,7 @@ namespace SO_WebCalc_Demo
 
         protected void btnClear_Click(object sender, EventArgs e)
         {
-            txtLCD.Text += "";
+            txtLCD.Text = " ";
         }
 
 
@@ -68,16 +68,28 @@ namespace SO_WebCalc_Demo
             Double Results = 0;
 
             //Perform the appropriate math
-            if (Session["Operand"].ToString() == "+")
+            
+            if (Session["Operand"].ToString() == "*")
             {
-                //perform addition
-                Results = Num1 + Num2;
+                //perform multiplication
+                Results = Num1 * Num2;
             }
             else if (Session["Operand"].ToString() == "/")
             {
                 //perform division
                 Results = Num1 / Num2;
             }
+            else if (Session["Operand"].ToString() == "+")
+            {
+                //perform addition
+                Results = Num1 + Num2;
+            }
+            else if (Session["Operand"].ToString() == "-")
+            {
+                //perform subtraction
+                Results = Num1 - Num2;
+            }
+
 
             //display results in the LCD
             txtLCD.Text = Results.ToString();
