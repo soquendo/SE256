@@ -40,3 +40,13 @@
     </div>
 
 </asp:Content>
+
+<%-- placeholder for new content. If no breaking news, clear the content between DIV tags-- %%>
+<asp:Content ID="Content1" ContentPlaceHolderID="BreakingNewsContent" runat="server">
+    <div>
+        <h1>Breaking News:</h1>
+        <p>
+            After sharing his awful brand of humor for decades, finds out that his jokes are not funny. Teacher shocked and amazed. His family and students request his face be the image next to Dad-Jokes if it is added to the dictionary.
+        </p>
+    </div>
+</asp:Content>

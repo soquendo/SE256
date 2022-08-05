@@ -58,6 +58,12 @@
             </div>
         </div>
         <div class="container body-content">
+
+            <div style="background-color:lightblue;">
+                <asp:ContentPlaceHolder ID="BreakingNewsContent" runat="server">
+                    </asp:ContentPlaceHolder>
+            </div>
+
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
