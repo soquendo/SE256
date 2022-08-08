@@ -108,6 +108,7 @@
     <Content Include="About.aspx" />
     <Content Include="Backend\ControlPanel.aspx" />
     <Content Include="Backend\Default.aspx" />
+    <Content Include="Backend\EbookMgr.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -163,6 +164,8 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Code\Book.cs" />
+    <Compile Include="App_Code\ValidationLibrary.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
@@ -185,6 +188,13 @@
     </Compile>
     <Compile Include="Backend\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Backend\EbookMgr.aspx.cs">
+      <DependentUpon>EbookMgr.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Backend\EbookMgr.aspx.designer.cs">
+      <DependentUpon>EbookMgr.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
