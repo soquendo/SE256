@@ -28,7 +28,7 @@ namespace SE256_Activity_SOquendo.App_Code
 
             set
             {
-                if (!ValidationLibrary.badWords(value))
+                if (ValidationLibrary.badWords(value) == true)
                 {
                     title = value;
                 }
