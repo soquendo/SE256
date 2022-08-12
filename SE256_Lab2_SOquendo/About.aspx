@@ -1,9 +1,9 @@
 ﻿<%@ Page Title="About" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="About.aspx.cs" Inherits="SE256_Lab2_SOquendo.SiteMaster" %>
 
 
-<asp:Content ID="Content1" ContentPlaceHolderID="BreakingNewsContent" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="NewProducts" runat="server">
     <div>
-
+        Super Special Stuff is here to provide you with useless products you absolutely need. Also, look for our store on Amazon!
     </div>
 </asp:Content>
 

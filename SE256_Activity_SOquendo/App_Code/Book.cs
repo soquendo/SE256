@@ -68,7 +68,7 @@ namespace SE256_Activity_SOquendo.App_Code
 
             set
             {
-                authorLast;
+                authorLast = value;
             }
         }
 

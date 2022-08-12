@@ -1,5 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EbookMgr.aspx.cs" Inherits="SE256_Activity_SOquendo.Backend.EbookMgr" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="BreakingNewsContent" runat="server">
+    <br />
+    <a href="~/Backend/ControlPanel.aspx" runat="server">Return to Control Panel</a>
+    <br />
+
 </asp:Content>
 
 
@@ -37,10 +42,24 @@
             <td><asp:Calendar ID="calDatePublished" runat="server"  /></td>
         </tr>
 
+        <tr>
+            <td>Number of Pages</td>
+            <td><asp:TextBox ID="txtPages" runat="server" MaxLength="5"  /></td>
+        </tr>
 
+        <tr>
+            <td>Price per copy</td>
+            <td><asp:TextBox ID="txtPrice" runat="server" MaxLength="10"  /></td>
+        </tr>
 
     </table>
 
+    <br />
+    <asp:Button ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click" />
+
+    <br />
+    <br />
+    <asp:Label ID="lblFeedback" runat="server" />
 
 
 </asp:Content>
