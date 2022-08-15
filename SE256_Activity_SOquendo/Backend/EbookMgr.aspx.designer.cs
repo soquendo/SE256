@@ -15,13 +15,13 @@ namespace SE256_Activity_SOquendo.Backend
     {
 
         /// <summary>
-        /// lblPerson_ID control.
+        /// lblEBook_ID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPerson_ID;
+        protected global::System.Web.UI.WebControls.Label lblEBook_ID;
 
         /// <summary>
         /// txtTitle control.
@@ -85,6 +85,24 @@ namespace SE256_Activity_SOquendo.Backend
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPrice;
+
+        /// <summary>
+        /// txtBookmarkPage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBookmarkPage;
+
+        /// <summary>
+        /// calRentalExpires control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Calendar calRentalExpires;
 
         /// <summary>
         /// btnAdd control.

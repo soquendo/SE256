@@ -25,13 +25,14 @@ namespace SE256_Activity_SOquendo.Backend
 
         protected void btnAdd_Click(object sender, EventArgs e)
         {
-            Book temp = new Book();
+            EBook temp = new EBook();
 
             temp.Title = txtTitle.Text;
             temp.AuthorFirst = txtAuthorFirst.Text;
             temp.AuthorLast = txtAuthorLast.Text;
             temp.Email = txtAuthorEmail.Text;
             temp.DatePublished = calDatePublished.SelectedDate;
+            temp.DateRentalExpires = calRentalExpires.SelectedDate;
 
             Int32 intPages = 0;
             if (Int32.TryParse(txtPages.Text, out intPages))
@@ -43,7 +44,14 @@ namespace SE256_Activity_SOquendo.Backend
             if (Double.TryParse(txtPrice.Text, out dblPrice))
             {
                 temp.Price = dblPrice;
-            }    
+            }
+
+            // if bookmark page is legit int, we copy it to the obj
+            Int32 intBookmarkPage = 0;
+            if (Int32.TryParse(txtBookmarkPage.Text, out intBookmarkPage))
+            {
+                temp.BookmarkPage = intBookmarkPage;
+            }
 
             if (temp.Feedback.Contains("ERROR:"))
             {
@@ -51,10 +59,9 @@ namespace SE256_Activity_SOquendo.Backend
             }
             else
             {
-                lblFeedback.Text = temp.Title + " by " + temp.AuthorFirst + " " + temp.AuthorLast;
+                lblFeedback.Text = temp.AddARecord();
             }
-
-        }
+        }//---------- end of btnAdd_Click -------------
 
     }
 }

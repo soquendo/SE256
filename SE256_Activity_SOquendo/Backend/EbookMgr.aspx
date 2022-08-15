@@ -13,8 +13,8 @@
     <table>
 
         <tr>
-            <td>Book ID</td>
-            <td><asp:Label ID="lblPerson_ID" runat="server" /></td>
+            <td>EBook ID</td>
+            <td><asp:Label ID="lblEBook_ID" runat="server" /></td>
         </tr>
 
         <tr>
@@ -50,6 +50,16 @@
         <tr>
             <td>Price per copy</td>
             <td><asp:TextBox ID="txtPrice" runat="server" MaxLength="10"  /></td>
+        </tr>
+
+        <tr>
+            <td>Bookmark Page</td>
+            <td><asp:TextBox ID ="txtBookmarkPage" runat="server" MaxLength="5" /></td>
+        </tr>
+
+        <tr>
+            <td>Date Rental Expires</td>
+            <td><asp:Calendar ID="calRentalExpires" runat="server" /></td>
         </tr>
 
     </table>
