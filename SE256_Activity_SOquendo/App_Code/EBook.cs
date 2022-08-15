@@ -126,5 +126,96 @@ namespace SE256_Activity_SOquendo.App_Code
             //return result feedback string
             return strResult;
         }//------- end of AddARecord() ---------------
+
+        public DataSet SearchEBooks_DS(String strTitle, String strAuthorLast)
+        {
+            //create dataset to return filled
+            DataSet ds = new DataSet();
+
+            //create command for SQL statement
+            SqlCommand comm = new SqlCommand();
+
+            //write select statement to perform search
+            String strSQL = "SELECT EBook_ID, Title, AuthorFirst, AuthorLast, DatePublished FROM EBooks WHERE 0=0";
+
+            //if the first/last name is filled in include it as search criteria
+            if (strTitle.Length > 0)
+            {
+                strSQL += " AND Title LIKE @Title";
+                comm.Parameters.AddWithValue("@Title", "%" + strTitle + "%");
+            }
+            if (strAuthorLast.Length > 0)
+            {
+                strSQL += " AND AuthorLast LIKE @AuthorLast";
+                comm.Parameters.AddWithValue("@AuthorLast", "%" + strAuthorLast + "%");
+            }
+
+            //create DB tools and configure
+            SqlConnection conn = new SqlConnection();
+            //Create the who, what where of the DB
+            string strConn = @GetConnected();
+            conn.ConnectionString = strConn;
+
+            //Fill in basic infor to command obj
+            comm.Connection = conn;     //tell commander what conn to use
+            comm.CommandText = strSQL;  //tell commander what to say
+
+            //create data adapter
+            SqlDataAdapter da = new SqlDataAdapter();
+            da.SelectCommand = comm;    //commander needs a translator(dataAdapter) to speak with datasets
+
+            //--------------------------------------
+
+            //get data
+            conn.Open();        //open conn (pick up phone)
+            da.Fill(ds, "EBooks_Temp");     //fill dataset with results from database and call it "EBooks_Temp"
+            conn.Close();   //close conn (hangs up phone)
+
+            //return data
+            return ds;
+        }
+
+        public SqlDataReader SearchEBooks_DR(String strTitle, String strAuthorLast)
+        {
+            //declare a datareader to return filled
+            SqlDataReader dr;
+            //create a command for SQL statement
+            SqlCommand comm = new SqlCommand();
+            //Write a Select statement to perform search
+            String strSQL = "SELECT EBook_ID, Title, AuthorFirst, AuthorLast, DatePublished FROM EBooks WHERE 0=0";
+
+            //if the first/last name is filled in, include it as search criteria
+            if (strTitle.Length > 0)
+            {
+                strSQL += " AND Title LIKE @Title";
+                comm.Parameters.AddWithValue("@Title", "%" + strTitle + "%");
+            }
+            if (strAuthorLast.Length > 0)
+            {
+                strSQL += " AND AuthorLast LIKE @AuthorLast";
+                comm.Parameters.AddWithValue("@AuthorLast", "%" + strAuthorLast + "%");
+            }
+
+            //create DB tools and configure
+            SqlConnection conn = new SqlConnection();
+            //Create the who, what, where of the DB
+            string strConn = @GetConnected();
+            conn.ConnectionString = strConn;
+
+            //Fill in basic info to command obj
+            comm.Connection = conn; //tell commander what connection to use
+            comm.CommandText = strSQL; // tell the commander what to say
+
+            //-----------------------------------
+
+            //get data
+            conn.Open();                //open the connection (pick up phone)
+            dr = comm.ExecuteReader();  //fill dataset with results from database
+            //conn.CLOSE(); //closing conn will destroy the data reader
+
+            //return the data
+            return dr;
+        }
+
     }//---------- end of EBook class ---------------
 }

@@ -1,0 +1,8 @@
+mt project
+1 - design
+2 - fix any issues you or a peer finds
+3 - backend: login, add, edit, del, search(datagrid)[1], view[2]
+-----------------------------
+4 - front-end (public)
+	1 - add a search with 2 criteria - results of choice (not datagrid)
+	2 - view option - no edit/del
