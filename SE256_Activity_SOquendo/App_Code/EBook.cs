@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 
 namespace SE256_Activity_SOquendo.App_Code
 {
-    public class EBook
+    public class EBook: Book
     {
         private DateTime dateRentalExpires;
         private int bookmarkPage;
@@ -112,7 +112,7 @@ namespace SE256_Activity_SOquendo.App_Code
             {
                 Conn.Open();        //open conn to DB - like dialing a phone
                 int intRecs = comm.ExecuteNonQuery();
-                strResult = $"SUCCESS: Inserted {intRecs} recorsd.";    //report making the connection and adding record
+                strResult = $"SUCCESS: Inserted {intRecs} records.";    //report making the connection and adding record
                 Conn.Close();       //hang up after call
             }
             catch (Exception err)   //reaching this means a prob conn to DB

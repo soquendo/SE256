@@ -60,11 +60,25 @@ namespace SE256_Activity_SOquendo
             dr = temp.SearchEBooks_DR(txtTitle.Text, txtAuthorLast.Text);
             //start the table
             litResults.Text = "<table>";
+            //create a header row
+            litResults.Text += "<th>Title</th><th>First Name</th><th>Last Name</th><th>Date Published</th><th>Edit Link</th>";
 
+            //loop through the results and add each as their own table row
+            while (dr.Read())
+            {
+                litResults.Text +=
+                    "<tr>" +
+                    "<td>" + dr["Title"].ToString() + "</td>" +
+                    "<td>" + dr["AuthorFirst"].ToString() + "</td>" +
+                    "<td>" + dr["AuthorLast"].ToString() + "</td>" +
+                    "<td>" + dr["DatePublished"].ToString() + "</td>" +
+                    "<td>" + "<a href='EBookMgr.aspx?EBook_ID=" + dr["eBook_ID"].ToString() + "'>Edit</a></td>" +
+                    "</tr>";
+            }
 
+            //close hte table, once the loop adding results is complete
+            litResults.Text += "</table>";
 
         }
-
-
     }
 }

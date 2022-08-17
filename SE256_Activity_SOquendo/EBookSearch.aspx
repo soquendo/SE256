@@ -46,6 +46,8 @@
             <asp:Label ID="lblAuthorLast" runat="server" Text='<%# Eval("AuthorLast") %>' />
             <asp:Label ID="lblDatePublished" runat="server" Text='<%# Eval("DatePublished") %>' />
 
+            <%-- <asp:HyperLink ID="lnkID" runat="server" Text="Edit" NavigateUrl='EBookMgr.aspx?EBook_ID=<%# Eval("eBook_ID") %> />--%>
+
             <asp:HyperLink ID="HyperLink1" runat="server" Text="Edit" NavigateUrl='<%# Eval("EBook_ID", "EBookMgr.aspx?EBook_ID={0}" ) %>' />
 
             <%--NavigateUrl='<%# Eval("Id", "~/Details.aspx?Id={0}")--%>
