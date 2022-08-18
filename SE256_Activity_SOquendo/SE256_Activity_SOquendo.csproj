@@ -116,7 +116,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
-    <Content Include="EBookSearch.aspx" />
+    <Content Include="Backend\EBookSearch.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -212,11 +212,11 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="EBookSearch.aspx.cs">
+    <Compile Include="Backend\EBookSearch.aspx.cs">
       <DependentUpon>EBookSearch.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="EBookSearch.aspx.designer.cs">
+    <Compile Include="Backend\EBookSearch.aspx.designer.cs">
       <DependentUpon>EBookSearch.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">

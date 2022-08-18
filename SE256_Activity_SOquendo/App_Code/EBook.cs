@@ -77,7 +77,7 @@ namespace SE256_Activity_SOquendo.App_Code
 
         private string GetConnected()
         {
-            return @"Server=sql.neit.edu\studentsqlserver,4500;Database=SE245_SLambert;User Id=SE245_SOquendo;Password=008016420;";
+            return @"Server=sql.neit.edu\studentsqlserver,4500;Database=SE133_SOquendo;User Id=SE133_SOquendo;Password=008016420;";
         }
 
         public EBook() : base() //calls the parents constructor
@@ -92,7 +92,7 @@ namespace SE256_Activity_SOquendo.App_Code
             SqlConnection Conn = new SqlConnection(); //make connection to obj
             Conn.ConnectionString = @GetConnected(); //set who, what, where of DB
 
-            string strSQL = "INSERT INTO EBooks (Title, AuthorFirst, AuthorLast, Email, Pages, DatePublished, DateRentalExpires, BookmarkPage) VALUES (@Title, @AuthorFirst, @AuthorLast, @Email, @Pages, @DatePublished, @DateRentalExpires, @BookmarkPage)";
+            string strSQL = "INSERT INTO EBooks (Title, AuthorFirst, AuthorLast, Email, Pages, Price, DatePublished, DateRentalExpires, BookmarkPage) VALUES (@Title, @AuthorFirst, @AuthorLast, @Email, @Pages, @Price, @DatePublished, @DateRentalExpires, @BookmarkPage)";
             //bark out our command
             SqlCommand comm = new SqlCommand();
             comm.CommandText = strSQL;  //commander knows what to say
@@ -103,6 +103,7 @@ namespace SE256_Activity_SOquendo.App_Code
             comm.Parameters.AddWithValue("@AuthorLast", AuthorLast);
             comm.Parameters.AddWithValue("@Email", Email);
             comm.Parameters.AddWithValue("@Pages", Pages);
+            comm.Parameters.AddWithValue("@Price", Price);
             comm.Parameters.AddWithValue("@DatePublished", DatePublished);
             comm.Parameters.AddWithValue("@DateRentalExpires", DateRentalExpires);
             comm.Parameters.AddWithValue("@BookmarkPage", BookmarkPage);
@@ -216,6 +217,130 @@ namespace SE256_Activity_SOquendo.App_Code
             //return the data
             return dr;
         }
+
+        public SqlDataReader FindOneBook(int intEBook_ID)
+        {
+            //create and initialize the DB tools we need
+            SqlConnection conn = new SqlConnection();
+            SqlCommand comm = new SqlCommand();
+
+            string strConn = GetConnected(); //my connection string
+
+            //my SQL command string to pull up one ebook's data
+            string sqlString = "SELECT * FROM EBooks WHERE EBook_ID = @EBook_ID;";
+
+            conn.ConnectionString = strConn; //tell the conn obj the who what where how
+
+            //give the command obj the info it needs
+            comm.Connection = conn;
+            comm.CommandText = sqlString;
+            comm.Parameters.AddWithValue("EBook_ID", intEBook_ID);
+
+            //open the database conn and yell our SQL command
+            conn.Open();
+
+            //return some form of feedback
+            return comm.ExecuteReader();    //return the dataset to be used by other - the calling form
+        }//----- end of public SqlDataReader 
+
+        public string DeleteOneEBook(int intEBook_ID)
+        {
+            Int32 intRecords = 0;
+            string strResult = "";
+
+            //create and initialize the DB tools we need
+            SqlConnection conn = new SqlConnection();
+            SqlCommand comm = new SqlCommand();
+
+            //my conn string
+            string strConn = GetConnected();
+
+            //my sql command string to pull up ebook data
+            string sqlString = "DELETE FROM EBooks WHERE EBook_ID = @EBook_ID;";
+
+            //tell the ocnn obj the who what where how
+            conn.ConnectionString = strConn;
+
+            //give the command obj info it needs
+            comm.Connection = conn;
+            comm.CommandText = sqlString;
+            comm.Parameters.AddWithValue("@EBook_ID", intEBook_ID);
+
+            try
+            {
+                //open the conn
+                conn.Open();
+
+                //run the delete and store the number of records affected
+                intRecords = comm.ExecuteNonQuery();
+                strResult = intRecords.ToString() + " Records Deleted.";
+            }
+            catch (Exception err)
+            {
+                strResult = "ERROR: " + err.Message;    //set feedback to state there was an error
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return strResult;
+        }//------------ end of DeleteOneEBook -----------------
+
+        public string UpdateARecord()
+        {
+            Int32 intRecords = 0;
+            string strResult = "";
+
+            //create sql command string
+            string strSQL = "UPDATE EBooks SET Title = @Title, AuthorFirst = @AuthorFirst, AuthorLast = @AuthorLast, Email=@Email, Pages=@Pages, Price=@Price, DatePublished=@DatePublished, DateRentalExpires=@DateRentalExpires, BookmarkPage=@BookmarkPage, WHERE EBook_ID=@EBook_ID;";
+
+            //create a conn to DB
+            SqlConnection conn = new SqlConnection();
+            //create whowhatwhere of the DB
+            string strConn = GetConnected();
+            conn.ConnectionString = strConn;
+
+            //bark otu command
+            SqlCommand comm = new SqlCommand();
+            comm.CommandText = strSQL; //commander knows what to say
+            comm.Connection = conn;     //heres the phone
+
+            //fill in parameters - has to be created in same sequence as they are in the sql statement
+            comm.Parameters.AddWithValue("@Title", Title);
+            comm.Parameters.AddWithValue("@AuthorFirst", AuthorFirst);
+            comm.Parameters.AddWithValue("@AuthorLast", AuthorLast);
+            comm.Parameters.AddWithValue("@Email", Email);
+            comm.Parameters.AddWithValue("@Pages", Pages);
+            comm.Parameters.AddWithValue("@Price", Price);
+            comm.Parameters.AddWithValue("@DatePublished", DatePublished);
+            comm.Parameters.AddWithValue("@DateRentlaExpires", DateRentalExpires);
+            comm.Parameters.AddWithValue("@BookmarkPage", BookmarkPage);
+            comm.Parameters.AddWithValue("@EBook_ID", EBook_ID);
+
+            try
+            {
+                //open the conn
+                conn.Open();
+
+                //run the update and store the number of records affected
+                intRecords = comm.ExecuteNonQuery();
+                strResult = intRecords.ToString() + " Records Updated.";
+            }
+            catch (Exception err)
+            {
+                strResult = "ERROR: " + err.Message; //set feedback to state there was error
+            }
+            finally
+            {
+                //close the connection
+                conn.Close();
+            }
+
+            return strResult;
+
+        }//----------- end of UpdateARecord ----------------
+
+
 
     }//---------- end of EBook class ---------------
 }
