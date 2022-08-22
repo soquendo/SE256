@@ -292,7 +292,7 @@ namespace SE256_Activity_SOquendo.App_Code
             string strResult = "";
 
             //create sql command string
-            string strSQL = "UPDATE EBooks SET Title = @Title, AuthorFirst = @AuthorFirst, AuthorLast = @AuthorLast, Email=@Email, Pages=@Pages, Price=@Price, DatePublished=@DatePublished, DateRentalExpires=@DateRentalExpires, BookmarkPage=@BookmarkPage, WHERE EBook_ID=@EBook_ID;";
+            string strSQL = "UPDATE EBooks SET Title = @Title, AuthorFirst = @AuthorFirst, AuthorLast = @AuthorLast, Email=@Email, Pages=@Pages, DatePublished=@DatePublished, DateRentalExpires=@DateRentalExpires, BookmarkPage=@BookmarkPage, Price=@Price WHERE EBook_ID=@EBook_ID;";
 
             //create a conn to DB
             SqlConnection conn = new SqlConnection();
@@ -311,10 +311,10 @@ namespace SE256_Activity_SOquendo.App_Code
             comm.Parameters.AddWithValue("@AuthorLast", AuthorLast);
             comm.Parameters.AddWithValue("@Email", Email);
             comm.Parameters.AddWithValue("@Pages", Pages);
-            comm.Parameters.AddWithValue("@Price", Price);
             comm.Parameters.AddWithValue("@DatePublished", DatePublished);
-            comm.Parameters.AddWithValue("@DateRentlaExpires", DateRentalExpires);
+            comm.Parameters.AddWithValue("@DateRentalExpires", DateRentalExpires);
             comm.Parameters.AddWithValue("@BookmarkPage", BookmarkPage);
+            comm.Parameters.AddWithValue("@Price", Price);
             comm.Parameters.AddWithValue("@EBook_ID", EBook_ID);
 
             try

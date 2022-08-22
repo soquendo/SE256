@@ -32,8 +32,12 @@ namespace SE256_Activity_SOquendo.Backend
             if ((!IsPostBack) && Request.QueryString["EBook_ID"] != null)
             {
                 //if there is an ID, there is no need to show the Add button
-                btnAdd.Visible = false;
-                btnAdd.Enabled = false;
+                //btnAdd.Visible = true;
+                //btnAdd.Enabled = false;
+                //btnDelete.Visible = true; //not visible
+                //btnUpdate.Visible = true;
+                //btnDelete.Enabled = true; //not enabled
+                //btnUpdate.Enabled = true;
 
                 //If so.. gather person's ID and fill form
                 strEBook_ID = Request.QueryString["EBook_ID"].ToString();
@@ -55,10 +59,10 @@ namespace SE256_Activity_SOquendo.Backend
                     txtPrice.Text = dr["Price"].ToString();
                     txtBookmarkPage.Text = dr["BookmarkPage"].ToString();
 
-                    calDatePublished.VisibleDate = DateTime.Parse(dr["DatePublished"].ToString()).Date;
+                    //calDatePublished.VisibleDate = DateTime.Parse(dr["DatePublished"].ToString()).Date;
                     calDatePublished.SelectedDate = DateTime.Parse(dr["DatePublished"].ToString()).Date;
 
-                    calRentalExpires.VisibleDate = DateTime.Parse(dr["DateRentalExpires"].ToString()).Date;
+                    //calRentalExpires.VisibleDate = DateTime.Parse(dr["DateRentalExpires"].ToString()).Date;
                     calRentalExpires.SelectedDate = DateTime.Parse(dr["DateRentalExpires"].ToString()).Date;
 
                 }
@@ -67,10 +71,12 @@ namespace SE256_Activity_SOquendo.Backend
             else
             {
                 //no ebook id, so it must be an add. hide the delete and update buttons
-                btnDelete.Visible = false; //not visible
-                btnUpdate.Visible = false;
-                btnDelete.Enabled = false; //not enabled
-                btnUpdate.Enabled = false;
+                //btnAdd.Visible = true;
+                //btnAdd.Enabled = true;
+                //btnDelete.Visible = true; //not visible
+                //btnUpdate.Visible = true;
+                //btnDelete.Enabled = false; //not enabled
+                //btnUpdate.Enabled = false;
             }
 
 
