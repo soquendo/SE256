@@ -1,0 +1,33 @@
+﻿@page
+@model Reservations.Pages.AddReservationModel
+@{
+    ViewData["Title"] = "AddReservation";
+}
+
+<h1>AddReservation</h1>
+
+<form method="post">
+
+    @* using regular html input but with binding to specific class properties and a more user friendly description*@
+    <input type="text" asp-for="rRes.Reserv_PartyName" placeholder="Party Name" />
+    <input type="text" asp-for="rRes.Reserv_People" placeholder="Number of people in party" />
+    <input type="date" asp-for="rRes.Reserv_Date" placeholder="Reservation Date" />
+    <input type="datetime" asp-for="rRes.Reserv_Time" placeholder="Reservation Time" />
+    <input type="text" asp-for="rRes.Reserv_Email" placeholder="Your Email" />
+
+    @* button that will submit the form data via a post method*@
+    <button type="submit">Submit</button>
+
+
+</form>
+
+
+@{
+    if (Model.rRes is null == false)
+    {
+        <h1>Results</h1>
+        <p>@Model.rRes.Reserv_PartyName</p>
+        <p>@Model.rRes.Reserv_Email</p>
+
+    }
+}

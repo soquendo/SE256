@@ -1,0 +1,32 @@
+﻿@page
+@model TroubleTickets_SE256_SOquendo.Pages.AddTicketModel
+@{
+    ViewData["Title"] = "AddTicket";
+}
+
+<h1>AddTicket</h1>
+
+<form method="post">
+
+    @* using regular html input but with binding to specific class properties and a more user friendly description*@
+    <input type="text" asp-for="tTicket.Ticket_Title" placeholder="Brief Title" />
+    <input type="text" asp-for="tTicket.Ticket_Desc" placeholder="Description of Problem" />
+    <input type="text" asp-for="tTicket.Category" placeholder="Category" />
+    <input type="text" asp-for="tTicket.Reporting_Email" placeholder="Your Email" />
+
+    @* button that will submit the form data via a post method*@
+    <button type="submit">Submit</button>
+
+
+</form>
+
+
+@{ 
+    if (Model.tTicket is null == false)
+    {
+        <h1>Results</h1>
+        <p>@Model.tTicket.Ticket_Title</p>
+        <p>@Model.tTicket.Reporting_Email</p>
+
+    }
+}
