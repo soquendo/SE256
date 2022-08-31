@@ -4,14 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Reservations.Models; //included this in order to create a temporary Ticket object
+using Reservations.Models; //included this in order to create a temporary reserv object
 
 namespace Reservations.Pages
 {
     public class AddReservationModel : PageModel
     {
         [BindProperty]      //requires object to come via a form
-        public ReservationModel rRes { get; set; } //instance of ticket model
+        public ReservationModel rRes { get; set; } //instance of reserv model
 
         public void OnGet()
         {
