@@ -9,17 +9,60 @@
 <form method="post">
 
     @* using regular html input but with binding to specific class properties and a more user friendly description*@
-    <input type="text" asp-for="tTicket.Ticket_Title" placeholder="Brief Title" />
+
+    <div class="form-group">
+        <label asp-for="tTicket.Ticket_Title"></label>
+        <input asp-for="tTicket.Ticket_Title" type="text" class="form-control" placeholder="Brief Descriptive Title" />
+        <span asp-validation-for="tTicket.Ticket_Title" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="tTicket.Ticket_Desc"></label>
+        <input asp-for="tTicket.Ticket_Desc" type="text" class="form-control" placeholder="Description of Problem" />
+        <span asp-validation-for="tTicket.Ticket_Desc" class="text-danger"></span>
+    </div>
+
+
+    <!--
+    <div class="form-group">
+        <label asp-for="tTicket.Category"></label>
+        <select asp-for="tTicket.Category" class="form-control">
+
+        </select>
+        <span asp-validation-for="tTicket.Category" class="text-danger"></span>
+    </div>
+    -->
+
+    <div class="form-group">
+        <label asp-for="tTicket.Category"></label>
+        <input asp-for="tTicket.Category" type="text" class="form-control" placeholder="Category" />
+        <span asp-validation-for="tTicket.Category" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="tTicket.Reporting_Email"></label>
+        <input asp-for="tTicket.Reporting_Email" type="text" class="form-control" placeholder="Your Email" />
+        <span asp-validation-for="tTicket.Reporting_Email" class="text-danger"></span>
+    </div>
+
+    @*button that will submit the form data via a POST method*@
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+    <!--<input type="text" asp-for="tTicket.Ticket_Title" placeholder="Brief Title" />
     <input type="text" asp-for="tTicket.Ticket_Desc" placeholder="Description of Problem" />
     <input type="text" asp-for="tTicket.Category" placeholder="Category" />
     <input type="text" asp-for="tTicket.Reporting_Email" placeholder="Your Email" />
 
     @* button that will submit the form data via a post method*@
-    <button type="submit">Submit</button>
-
+    <button type="submit">Submit</button> -->
 
 </form>
 
+@* scripts to inc the client side validation of the input fields in this view*@
+
+<script src="/lib/jquery/dist/jquery.min.js"></script>
+<script src="/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
 
 @{ 
     if (Model.tTicket is null == false)
