@@ -32,12 +32,25 @@ namespace Reservations.Models
         [RegularExpression(@"[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}", ErrorMessage = "Incorrect Email Format")]
         public String Reserv_Email { get; set; }
 
+        [Required(ErrorMessage = "Confirm Email is Required")]
+        [DataType(DataType.EmailAddress)]
+        [System.ComponentModel.DataAnnotations.Compare("Reserv_Email", ErrorMessage = "Email Not Matched")]
+        public String ConfirmEmail { get; set; }
+
+        /*[Required(ErrorMessage = "Email ID is Required")]
+        [DataType(DataType.EmailAddress)]
+        [MaxLength(50)]
+        [RegularExpression(@"[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}", ErrorMessage = "Incorrect Email Format")]
+        public String Reserv_Email { get; set; }*/
+
 
         [Required]
         [Display(Name = "Date of reservation")]
         [DataType(DataType.DateTime), DisplayFormat(DataFormatString = "{0:MM/dd/yyyy hh:mm:ss tt}", ApplyFormatInEditMode = true)]
         [MyDate(ErrorMessage = "Past date entry not allowed")]
         public DateTime Reserv_Date { get; set; }
+
+ 
 
         //public DateTime Reserv_Date { get; set; } //date for reserv
 

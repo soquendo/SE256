@@ -16,7 +16,7 @@ namespace Reservations.Models
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
             DateTime _dateJoin = Convert.ToDateTime(value); //take in object and convert to DateTime
-            if (_dateJoin <= DateTime.Now) //if Date is past, return success
+            if (_dateJoin >= DateTime.Now) //if Date is past, return success
             {
                 return ValidationResult.Success;
             }

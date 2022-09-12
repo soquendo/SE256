@@ -56,6 +56,6 @@ namespace TroubleTickets_SE256_SOquendo.Pages
             }
 
             tix = factory.GetActiveRecords().ToList(); //fill in currently empty list with records
-        }
+        } 
     }
 }
