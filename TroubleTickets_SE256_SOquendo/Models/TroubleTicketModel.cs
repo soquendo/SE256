@@ -54,6 +54,8 @@ namespace TroubleTickets_SE256_SOquendo.Models
 
         [Required]
         public bool Active { get; set; } // active = true, closed = false
+        
+        public String Feedback { get; set; } // new
 
 
     }

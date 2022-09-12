@@ -9,11 +9,39 @@
 <form method="post">
 
     @* using regular html input but with binding to specific class properties and a more user friendly description*@
-    <input type="text" asp-for="rRes.Reserv_PartyName" placeholder="Party Name" />
-    <input type="text" asp-for="rRes.Reserv_People" placeholder="Number of people in party" />
-    <input type="date" asp-for="rRes.Reserv_Date" placeholder="Reservation Date" />
-    <input type="datetime" asp-for="rRes.Reserv_Time" placeholder="Reservation Time" />
-    <input type="text" asp-for="rRes.Reserv_Email" placeholder="Your Email" />
+
+    <div class="form-group">
+        <label asp-for="rRes.Reserv_PartyName"></label>
+        <input asp-for="rRes.Reserv_PartyName" type="text" class="form-control" placeholder="Enter your party name" />
+        <span asp-validation-for="rRes.Reserv_PartyName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="rRes.Reserv_People"></label>
+        <input asp-for="rRes.Reserv_People" type="text" class="form-control" placeholder="Number of people in party" />
+        <span asp-validation-for="rRes.Reserv_People" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="rRes.Reserv_Date"></label>
+        <input asp-for="rRes.Reserv_Date" type="date" class="form-control" placeholder="Date and Time of Reservation" />
+        <span asp-validation-for="rRes.Reserv_Date" class="text-danger"></span>
+    </div>
+
+
+    <!-- <input type="datetime" asp-for="rRes.Reserv_Time" placeholder="Reservation Time" /> -->
+
+    <div class="form-group">
+        <label asp-for="rRes.Reserv_Phone"></label>
+        <input asp-for="rRes.Reserv_Phone" type="text" class="form-control" placeholder="Your phone number" />
+        <span asp-validation-for="rRes.Reserv_Phone" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="rRes.Reserv_Email"></label>
+        <input asp-for="rRes.Reserv_Email" type="text" class="form-control" placeholder="Your email" />
+        <span asp-validation-for="rRes.Reserv_Email" class="text-danger"></span>
+    </div>
 
     @* button that will submit the form data via a post method*@
     <button type="submit">Submit</button>
@@ -21,6 +49,9 @@
 
 </form>
 
+<script src="/lib/jquery/dist/jquery.min.js"></script>
+<script src="/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
 
 @{
     if (Model.rRes is null == false)

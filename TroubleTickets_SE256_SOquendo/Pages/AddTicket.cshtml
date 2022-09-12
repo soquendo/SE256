@@ -65,11 +65,11 @@
 <script src="/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
 
 @{ 
-    if (Model.tTicket is null == false)
+    if (Model.tTicket != null && Model.tTicket.Feedback != null)
     {
         <h1>Results</h1>
-        <p>@Model.tTicket.Ticket_Title</p>
-        <p>@Model.tTicket.Reporting_Email</p>
+        <p>@Model.tTicket.Feedback</p>
+        
 
     }
 }
