@@ -15,14 +15,14 @@ namespace Reservations.Models
         public String Reserv_PartyName { get; set; } // basic description - 255 char
 
         [Required]
-        public double Reserv_People { get; set; } // more descriptive, will be text field
+        public int Reserv_People { get; set; } // more descriptive, will be text field
 
         //[Required, EmailAddress]
         //public String Reserv_Email { get; set; } //email of person making reservation
 
         [Required]
         [DataType(DataType.PhoneNumber)]
-        [RegularExpression(@"^\(?([0-9]{2})[-. ]?([0-9]{4})[-. ]?([0-9]{3})[-. ]?([0-9]{3})$", ErrorMessage = "Not a valid Phone number")]
+        [RegularExpression(@"^\+?[1-9][0-9]{7,14}$", ErrorMessage = "Not a valid Phone number")]
         public string Reserv_Phone { get; set; }
 
 
@@ -50,7 +50,13 @@ namespace Reservations.Models
         [MyDate(ErrorMessage = "Past date entry not allowed")]
         public DateTime Reserv_Date { get; set; }
 
- 
+        [Required]
+        [Display(Name = "Time of reservation")]
+        [DataType(DataType.Time), DisplayFormat(DataFormatString = "{hh:mm:ss tt}", ApplyFormatInEditMode = true)]
+        [MyDate(ErrorMessage = "Please select a time during our business hours")]
+        public DateTime Reserv_Time { get; set; }
+
+
 
         //public DateTime Reserv_Date { get; set; } //date for reserv
 

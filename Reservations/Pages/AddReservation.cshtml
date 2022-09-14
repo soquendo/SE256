@@ -4,47 +4,56 @@
     ViewData["Title"] = "AddReservation";
 }
 
-<h1>AddReservation</h1>
+<h1>Thanks for choosing Joe Schmoe's</h1>
+<h3>Make your reservation below</h3>
 
 <form method="post">
 
     @* using regular html input but with binding to specific class properties and a more user friendly description*@
 
     <div class="form-group">
-        <label asp-for="rRes.Reserv_PartyName"></label>
-        <input asp-for="rRes.Reserv_PartyName" type="text" class="form-control" placeholder="Enter your party name" />
+        <label asp-for="rRes.Reserv_PartyName">Party Name</label>
+        <input asp-for="rRes.Reserv_PartyName" type="text" class="form-control" placeholder="Enter a name for your party" />
         <span asp-validation-for="rRes.Reserv_PartyName" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="rRes.Reserv_People"></label>
-        <input asp-for="rRes.Reserv_People" type="text" class="form-control" placeholder="Number of people in party" />
+        <label asp-for="rRes.Reserv_People">Guests</label>
+        <input asp-for="rRes.Reserv_People" type="text" class="form-control" placeholder="Enter the number of people in party" />
         <span asp-validation-for="rRes.Reserv_People" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="rRes.Reserv_Date"></label>
-        <input asp-for="rRes.Reserv_Date" type="date" class="form-control" placeholder="Date and Time of Reservation" />
+        <label asp-for="rRes.Reserv_Date">Select Date</label>
+        <input asp-for="rRes.Reserv_Date" type="datetime" class="form-control" placeholder="Date of Reservation" asp-format="{0:yyyy-MM-ddTHH:mm}" />
         <span asp-validation-for="rRes.Reserv_Date" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="rRes.Reserv_Time">Select Time</label>
+        <input asp-for="rRes.Reserv_Time" type="time" class="form-control" placeholder="Time of Reservation" asp-format="{0:THH:mm}" />
+        <span asp-validation-for="rRes.Reserv_Time" class="text-danger"></span>
     </div>
 
     <!-- <input type="datetime" asp-for="rRes.Reserv_Time" placeholder="Reservation Time" /> -->
 
+    <h3>Guest Contact Info</h3>
+
     <div class="form-group">
-        <label asp-for="rRes.Reserv_Phone"></label>
-        <input asp-for="rRes.Reserv_Phone" type="text" class="form-control" placeholder="Your phone number" />
+        <label asp-for="rRes.Reserv_Phone">Phone Number</label>
+        <input asp-for="rRes.Reserv_Phone" type="text" class="form-control" placeholder="phone number - ex. 4012225555" />
         <span asp-validation-for="rRes.Reserv_Phone" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="rRes.Reserv_Email"></label>
-        <input asp-for="rRes.Reserv_Email" type="text" class="form-control" placeholder="Your email" />
+        <label asp-for="rRes.Reserv_Email">Your Email</label>
+        <input asp-for="rRes.Reserv_Email" type="text" class="form-control" placeholder="guest@internet.com" />
         <span asp-validation-for="rRes.Reserv_Email" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="rRes.ConfirmEmail"></label>
-        <input asp-for="rRes.ConfirmEmail" type="text" class="form-control" placeholder="Your email" />
+        <label asp-for="rRes.ConfirmEmail">Confirm Your Email</label>
+        <input asp-for="rRes.ConfirmEmail" type="text" class="form-control" placeholder="guest@internet.com" />
         <span asp-validation-for="rRes.ConfirmEmail" class="text-danger"></span>
     </div>
 
