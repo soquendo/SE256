@@ -64,6 +64,9 @@ namespace Reservations.Models
 
         public String Reserv_Notes { get; set; } // notes from the person making the reserv
 
+        [Display(Name = "Would you like to receive emails and be added to your mailing list?")]
+        public bool mailList { get; set; }
+
         [Required]
         public bool Active { get; set; } // is this active or closed (false) - binary field
 

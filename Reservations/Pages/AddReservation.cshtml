@@ -57,6 +57,12 @@
         <span asp-validation-for="rRes.ConfirmEmail" class="text-danger"></span>
     </div>
 
+    <div class="form-group">
+        <div class="checkbox">
+            <label><input name="mailList" type="checkbox" value="false" onchange="this.value=this.checked">  Would you like to be added to our mailing list?</label>
+        </div>
+    </div>
+
     @* button that will submit the form data via a post method*@
     <button type="submit">Submit</button>
 
