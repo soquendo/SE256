@@ -75,7 +75,7 @@ namespace TroubleTickets_SE256_SOquendo.Models
 
         public IEnumerable<TroubleTicketModel> GetActiveRecords()
         {
-            List<TroubleTicketModel> FirstTix = new List<TroubleTicketModel>(); // list to hold TroubleTickets from db table
+            List<TroubleTicketModel> lstTix = new List<TroubleTicketModel>(); // list to hold TroubleTickets from db table
 
             try
             {
@@ -104,7 +104,7 @@ namespace TroubleTickets_SE256_SOquendo.Models
                         ticket.Responder_Email = rdr["Responder_Email"].ToString();
                         ticket.Responder_Notes = rdr["Responder_Notes"].ToString();
 
-                        FirstTix.Add(ticket); //add newly created ticket and add to the list of tix
+                        lstTix.Add(ticket); //add newly created ticket and add to the list of tix
 
                     }
                     con.Close();
@@ -114,8 +114,147 @@ namespace TroubleTickets_SE256_SOquendo.Models
             {
                 //nothing at the moment
             }
-            return FirstTix;      //return the list so the razor page can build the html table based on the list
+            return lstTix;      //return the list so the razor page can build the html table based on the list
         }//------ end of IEnumerable --------
+
+        public TroubleTicketModel GetOneRecord(int? id)
+        {
+            TroubleTicketModel ticket = new TroubleTicketModel(); // Placeholder for record based on ID
+
+            try
+            {
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    // Configure our command onject with SQL statement and connection
+                    string strSQL = "SELECT * FROM TroubleTickets WHERE Ticket_ID = @Ticket_ID;";
+                    SqlCommand cmd = new SqlCommand(strSQL, con);
+                    cmd.CommandType = CommandType.Text;
+
+                    cmd.Parameters.AddWithValue("@Ticket_ID", id); // Set the parameter using the method param
+
+                    con.Open();
+                    SqlDataReader rdr = cmd.ExecuteReader(); // Populate the data reader (rdr) from DB
+
+                    // Loop through each record
+                    // For each record fill a temporary trouble ticket object with current record's data
+                    // Then add this temporary ticket object to the list. List will be available to the CSHTML to format.
+                    while (rdr.Read())
+                    {
+                        ticket.Ticket_ID = Convert.ToInt32(rdr["Ticket_ID"]); // Needed to convert to string, the Int32
+                        ticket.Ticket_Title = rdr["Ticket_Title"].ToString();
+                        ticket.Category = rdr["Category"].ToString();
+                        ticket.Reporting_Email = rdr["Reporting_Email"].ToString();
+                        ticket.Orig_Date = DateTime.Parse(rdr["Orig_Date"].ToString()); // Needed to parse to sting, then to a Boolean
+                        ticket.Reporting_Email = rdr["Responder_Email"].ToString();
+                        ticket.Responder_Notes = rdr["Responder_Notes"].ToString();
+
+
+                        // Create a DateTime object, if there is an existing close date, tempDate gets filled with TryParse
+                        DateTime tempDate;
+                        if (rdr["Close_Date"] != null && DateTime.TryParse(rdr["Close_Date"].ToString(), out tempDate))
+                        {
+                            ticket.Close_Det = tempDate; // If there is a date in tempDate, store it in Close_Date property/field
+                        }
+
+                        ticket.Ticket_Desc = rdr["Ticket_Desc"].ToString();
+                    }
+                    con.Close();
+                }
+            }
+            catch (Exception err) // If there is a runtime error during TRY, we catch it and store error in Feedback
+            {
+
+                ticket.Feedback = "ERROR: " + err.Message;
+
+            }
+
+            return ticket; // Return the list so the Razor page can build HTML table based on this list
+        }
+
+        // To Update the records of a particular trouble ticket
+        public void UpdateTicket(TroubleTicketModel tTicket)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    SqlCommand cmd = new SqlCommand(); // Create a basic command onject and add SQL and Conn later
+
+                    // Because Close_Date is only necessary during a Closure of a Ticket, we use an if statement to set our SQL statement
+                    string strSQL;
+                    if (tTicket.Active == false)
+                    {
+                        strSQL = "UPDATE TroubleTickets SET Responder_Email = @Responder_Email, Responder_Notes = @Responder_Notes, " + "Close_Date = @Close_Date, Active = @Active WHERE Ticket_ID = @Ticket_ID;";
+
+                    }
+                    else
+                    {
+                        strSQL = "UPDATE TroubleTickets SET Responder_Email = @Responder_Email, Responder_Notes = @Responder_Notes, " + "Active = @Active WHERE Ticket_ID = @Ticket_ID;";
+                    }
+
+                    // Configure the command object
+                    cmd.CommandText = strSQL;
+                    cmd.Connection = con;
+                    cmd.CommandType = CommandType.Text;
+
+                    // Fill parameters with form values
+                    cmd.Parameters.AddWithValue("@Responder_Email", tTicket.Responder_Email);
+                    cmd.Parameters.AddWithValue("@Responder_Notes", tTicket.Responder_Notes);
+
+                    // If this ticket is being closed, then set the date for close_date
+                    if (tTicket.Active == false)
+                    {
+                        cmd.Parameters.AddWithValue("@Close_Date", DateTime.Now);
+                    }
+
+                    cmd.Parameters.AddWithValue("@Active", tTicket.Active);
+
+                    cmd.Parameters.AddWithValue("@Ticket_ID", tTicket.Ticket_ID);
+
+                    // DO the update deed
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+
+
+                }
+            }
+            catch (Exception err)
+            {
+                // If there is a runtime error, report it in feedback
+                tTicket.Feedback = "ERROR: " + err.Message;
+            }
+
+        }
+        public TroubleTicketModel DeleteTicket(int? id)
+        {
+            TroubleTicketModel ticket = new TroubleTicketModel(); // Pleaceholder for record based on ID
+            try
+            {
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    string strSQL = "DELETE FROM TroubleTickets WHERE Ticket_ID = @Ticket_ID;";
+                    SqlCommand cmd = new SqlCommand(strSQL, con);
+                    cmd.CommandType = CommandType.Text;
+
+                    cmd.Parameters.AddWithValue("@Ticket_ID", id);
+
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
+            catch (Exception err)
+            {
+                // If there is a runtime error, report it in feedback
+                ticket.Feedback = "ERROR: " + err.Message;
+            }
+
+            return ticket;
+        }
+    }
+}
+    
 
 
     }

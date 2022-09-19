@@ -6,5 +6,60 @@
 
 <div class="text-center">
     <h1 class="display-4">Joe Schmoe's Restaurant</h1>
-    <p>Reserve your table online!</a></p>
+    <p>Reserve your table online!</p>
+
+    <table class="table table-bordered table-sm table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Party Name</th>
+                <th>Number of People</th>
+                <th>Date of Reservation</th>
+                <th>Contact Phone Number</th>
+                <th>Contact Email</th>
+                <th>Confirm Email</th>
+                <th>Mailing List</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @if (Model == null)
+            {
+                <tr>
+                    <td colspan="7" class="text-center">No Model</td>
+                </tr>
+            }
+            else
+            {
+                @foreach (var p in Model.resv)
+                {
+                    <tr>
+                        <td>@p.Reserv_ID</td>
+                        <td>@p.Reserv_PartyName</td>
+                        <td>@p.Reserv_People</td>
+                        <td>@p.Reserv_Date</td>
+                        <td>@p.Reserv_Phone</td>
+                        <td>@p.Reserv_Email</td>
+                        <td>@p.ConfirmEmail</td>
+                        <td>@p.mailList</td>
+
+                        <!-- "at"{
+                            if (p.Active == true)
+                            {
+                                <td>Active</td>
+                            }
+                            else
+                            {
+                                <td>Closed</td>
+                            }
+                        } -->
+
+                        <!--<td>"at"p.Responder_Email</td>
+                        <td style="width:100%;">"at"p.Responder_Notes</td> -->
+                    </tr>
+                }
+            }
+
+        </tbody>
+    </table>
 </div>

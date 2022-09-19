@@ -1,0 +1,44 @@
+﻿@page
+@model TroubleTickets_SE256_SOquendo.Pages.Admin.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Login Page</h1>
+
+<form method="post">
+
+    @* We are using reg HTML input but with binding to specific class properties and a more userfriendly description *@
+
+    <div class="form-group">
+        <label asp-for="tAdmin.TicketAdmin_Email"></label>
+        <input asp-for="tAdmin.TicketAdmin_Email" type="text" class="form-control" placeholder="Username" />
+        <span asp-validation-for="tAdmin.TicketAdmin_Email" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="tAdmin.TicketAdmin_PW"></label>
+        <input asp-for="tAdmin.TicketAdmin_PW" type="text" class="form-control" placeholder="Password" />
+        <span asp-validation-for="tAdmin.TicketAdmin_PW" class="text-danger"></span>
+    </div>
+
+    @* button that will submit the form data via POST method *@
+    <button type="submit" class="btn btn-primary">Login</button>
+
+</form>
+
+@* Scripts to incorporate the client side validation of the input fields in this view *@
+
+<script src="/lib/jquery/dist/jquery.min.js"></script>
+<script src="/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+@{
+    if (Model.tAdmin != null && Model.tAdmin.Feedback != null)
+    {
+
+        <h1>Result</h1>
+        <p>@Model.tAdmin.Feedback</p>
+
+    }
+}

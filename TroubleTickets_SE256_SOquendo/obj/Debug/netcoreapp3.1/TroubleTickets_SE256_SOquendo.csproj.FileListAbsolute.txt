@@ -86,3 +86,6 @@ C:\Users\008016420\Desktop\myprojects\SE256\TroubleTickets_SE256_SOquendo\obj\De
 C:\Users\008016420\Desktop\myprojects\SE256\TroubleTickets_SE256_SOquendo\obj\Debug\netcoreapp3.1\TroubleTickets_SE256_SOquendo.dll
 C:\Users\008016420\Desktop\myprojects\SE256\TroubleTickets_SE256_SOquendo\obj\Debug\netcoreapp3.1\TroubleTickets_SE256_SOquendo.pdb
 C:\Users\008016420\Desktop\myprojects\SE256\TroubleTickets_SE256_SOquendo\obj\Debug\netcoreapp3.1\TroubleTickets_SE256_SOquendo.genruntimeconfig.cache
+C:\Users\soque\Desktop\SE256\TroubleTickets_SE256_SOquendo\bin\Debug\netcoreapp3.1\TroubleTickets_SE256_SOquendo.StaticWebAssets.xml
+C:\Users\soque\Desktop\SE256\TroubleTickets_SE256_SOquendo\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\ControlPanel.cshtml.g.cs
+C:\Users\soque\Desktop\SE256\TroubleTickets_SE256_SOquendo\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\Index.cshtml.g.cs

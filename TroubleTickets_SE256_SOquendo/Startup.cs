@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -8,6 +10,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
+using Microsoft.AspNetCore.Session;
 
 namespace TroubleTickets_SE256_SOquendo
 {
@@ -23,7 +27,26 @@ namespace TroubleTickets_SE256_SOquendo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRazorPages();
+            services.AddHttpContextAccessor();
+            services.AddSession();
+            services.AddMemoryCache();
+
+            //another option for adding a session, where we can set the timeout value instead of the default 20 min
+
+            //services.AddSession(options => {
+            //options.IdleTimeout = TimeSpan.FromMinutes(30);
+            //});
+
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                //this lambda determines whether user consent for nonessential cookies is needed for a given request
+                //changed this from true to false - else sessions fail
+                options.CheckConsentNeeded = context => false;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
+
+            services.AddMvc().SetCompatibilityVersion
+                (CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,6 +65,9 @@ namespace TroubleTickets_SE256_SOquendo
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseCookiePolicy();
+            app.UseSession();
+            app.UseMvc();
 
             app.UseRouting();
 
