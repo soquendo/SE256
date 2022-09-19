@@ -1,23 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\soque\\Desktop\\SE256\\TroubleTickets_SE256_SOquendo\\TroubleTickets_SE256_SOquendo.csproj": {}
+    "C:\\Users\\008016420\\Desktop\\myprojects\\SE256\\TroubleTickets_SE256_SOquendo\\TroubleTickets_SE256_SOquendo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\soque\\Desktop\\SE256\\TroubleTickets_SE256_SOquendo\\TroubleTickets_SE256_SOquendo.csproj": {
+    "C:\\Users\\008016420\\Desktop\\myprojects\\SE256\\TroubleTickets_SE256_SOquendo\\TroubleTickets_SE256_SOquendo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\soque\\Desktop\\SE256\\TroubleTickets_SE256_SOquendo\\TroubleTickets_SE256_SOquendo.csproj",
+        "projectUniqueName": "C:\\Users\\008016420\\Desktop\\myprojects\\SE256\\TroubleTickets_SE256_SOquendo\\TroubleTickets_SE256_SOquendo.csproj",
         "projectName": "TroubleTickets_SE256_SOquendo",
-        "projectPath": "C:\\Users\\soque\\Desktop\\SE256\\TroubleTickets_SE256_SOquendo\\TroubleTickets_SE256_SOquendo.csproj",
-        "packagesPath": "C:\\Users\\soque\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\soque\\Desktop\\SE256\\TroubleTickets_SE256_SOquendo\\obj\\",
+        "projectPath": "C:\\Users\\008016420\\Desktop\\myprojects\\SE256\\TroubleTickets_SE256_SOquendo\\TroubleTickets_SE256_SOquendo.csproj",
+        "packagesPath": "C:\\Users\\008016420\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\008016420\\Desktop\\myprojects\\SE256\\TroubleTickets_SE256_SOquendo\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\soque\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\008016420\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -67,7 +68,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

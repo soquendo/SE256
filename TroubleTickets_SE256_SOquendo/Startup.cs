@@ -25,6 +25,7 @@ namespace TroubleTickets_SE256_SOquendo
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
+        [Obsolete]
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddHttpContextAccessor();
@@ -50,7 +51,8 @@ namespace TroubleTickets_SE256_SOquendo
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        [Obsolete]
+        public void Configure(IApplicationBuilder app, Microsoft.AspNetCore.Hosting.IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -67,11 +69,13 @@ namespace TroubleTickets_SE256_SOquendo
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseSession();
-            app.UseMvc();
+            
 
             app.UseRouting();
 
             app.UseAuthorization();
+
+           // app.UseMvc();
 
             app.UseEndpoints(endpoints =>
             {

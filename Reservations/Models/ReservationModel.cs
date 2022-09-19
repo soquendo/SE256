@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+
 
 namespace Reservations.Models
 {
@@ -20,11 +22,12 @@ namespace Reservations.Models
         //[Required, EmailAddress]
         //public String Reserv_Email { get; set; } //email of person making reservation
 
-        [Required]
-        [DataType(DataType.PhoneNumber)]
-        [RegularExpression(@"^\+?[1-9][0-9]{7,14}$", ErrorMessage = "Not a valid Phone number")]
-        public string Reserv_Phone { get; set; }
+        //@"^\+?[1-9][0-9]{7,14}$", ErrorMessage = "Not a valid Phone number")]
+        
 
+        [DataType(DataType.PhoneNumber)]
+        [RegularExpression(@"^(\+0?1\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$", ErrorMessage = "Not a valid Phone number")]
+        public string Reserv_Phone { get; set; }
 
         [Required(ErrorMessage = "Email ID is Required")]
         [DataType(DataType.EmailAddress)]

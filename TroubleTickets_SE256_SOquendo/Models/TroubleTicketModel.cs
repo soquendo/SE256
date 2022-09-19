@@ -22,18 +22,11 @@ namespace TroubleTickets_SE256_SOquendo.Models
             ErrorMessage ="Sorry.. category is invalid. Categories: Monitor, Computer, Printer, Software Install, Software Upgrade, Configuration, Internet")]
         public String Category { get; set; } //short string to categorize problems
 
-        [Required, EmailAddress]
+        [Required(ErrorMessage = "Email ID is Required")]
+        [DataType(DataType.EmailAddress)]
+        [MaxLength(50)]
+        [RegularExpression(@"[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}", ErrorMessage = "Incorrect Email Format")]
         public String Reporting_Email { get; set; } //email of person reporting the ticket
-
-        //public DateTime Orig_Date { get; set; } //date and time the ticket was posted
-
-        //public DateTime Close_Date { get; set; } //date and time the ticket was posted
-
-        //public String Responder_Notes { get; set; } // notes from the tech support responder
-
-        //public String Responder_Email { get; set; } //email address of the responder
-
-        //public bool Active { get; set; } // is this active or closed (false) - binary field
 
         [Required]
         [Display(Name = "Original date of the problem.")]
@@ -49,7 +42,10 @@ namespace TroubleTickets_SE256_SOquendo.Models
 
         public String Responder_Notes { get; set; } // notes from tech support
 
-        [EmailAddress]
+        [Required(ErrorMessage = "Email ID is Required")]
+        [DataType(DataType.EmailAddress)]
+        [MaxLength(50)]
+        [RegularExpression(@"[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}", ErrorMessage = "Incorrect Email Format")]
         public String Responder_Email { get; set; } //email of responder
 
         [Required]

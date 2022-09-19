@@ -153,7 +153,7 @@ namespace TroubleTickets_SE256_SOquendo.Models
                         DateTime tempDate;
                         if (rdr["Close_Date"] != null && DateTime.TryParse(rdr["Close_Date"].ToString(), out tempDate))
                         {
-                            ticket.Close_Det = tempDate; // If there is a date in tempDate, store it in Close_Date property/field
+                            ticket.Close_Date = tempDate; // If there is a date in tempDate, store it in Close_Date property/field
                         }
 
                         ticket.Ticket_Desc = rdr["Ticket_Desc"].ToString();
@@ -252,10 +252,5 @@ namespace TroubleTickets_SE256_SOquendo.Models
 
             return ticket;
         }
-    }
-}
-    
-
-
     }
 }
